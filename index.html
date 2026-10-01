@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f4f0e8" />
+  <title>BIG MAMA'S 24TH</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+    :root {
+      --cream: #f4f0e8;
+      --paper: #fffdf8;
+      --ink: #111111;
+      --pink: #ff4f93;
+      --green: #c9ff35;
+      --olive: #68763f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "DM Sans", Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 34px 18px;
+    }
+
+    .invite {
+      width: min(760px, 100%);
+      background: var(--paper);
+      border: 2px solid var(--ink);
+      border-radius: 34px;
+      padding: 64px 54px 46px;
+      text-align: center;
+      box-shadow: 10px 10px 0 var(--ink);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dot {
+      position: absolute;
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+    }
+
+    .dot.one {
+      width: 92px;
+      height: 92px;
+      background: var(--pink);
+      top: -34px;
+      left: -26px;
+    }
+
+    .dot.two {
+      width: 74px;
+      height: 74px;
+      background: var(--green);
+      right: -20px;
+      top: 110px;
+    }
+
+    .dot.three {
+      width: 48px;
+      height: 48px;
+      background: var(--olive);
+      bottom: 40px;
+      left: -16px;
+    }
+
+    .kicker {
+      font-family: "Space Grotesk", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .24em;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(64px, 12vw, 118px);
+      line-height: .86;
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+    }
+
+    .paintball {
+      display: inline-block;
+      margin-top: 20px;
+      background: var(--green);
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      padding: 11px 18px 10px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      font-size: 12px;
+    }
+
+    .welcome {
+      max-width: 570px;
+      margin: 34px auto 0;
+      font-size: 18px;
+      line-height: 1.65;
+      color: rgba(17,17,17,.75);
+    }
+
+    .welcome strong {
+      color: var(--ink);
+    }
+
+    .details {
+      margin: 38px auto 0;
+      max-width: 520px;
+      border-top: 1px solid rgba(17,17,17,.18);
+      border-bottom: 1px solid rgba(17,17,17,.18);
+      padding: 10px 0;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 4px;
+      border-bottom: 1px solid rgba(17,17,17,.10);
+    }
+
+    .row:last-child {
+      border-bottom: none;
+    }
+
+    .label {
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(17,17,17,.52);
+      text-align: left;
+    }
+
+    .value {
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .included {
+      margin: 34px auto 0;
+      max-width: 540px;
+      text-align: left;
+      border: 2px solid var(--ink);
+      border-radius: 24px;
+      padding: 24px 26px;
+      background: var(--green);
+      box-shadow: 5px 5px 0 var(--ink);
+    }
+
+    .included h2,
+    .tips h2 {
+      margin: 0 0 14px;
+      font-family: "Space Grotesk", sans-serif;
+      text-transform: uppercase;
+      font-size: 22px;
+      letter-spacing: -.02em;
+    }
+
+    .included ul,
+    .tips ul {
+      margin: 0;
+      padding-left: 20px;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .tips {
+      margin: 34px auto 0;
+      max-width: 540px;
+      text-align: left;
+      border: 2px solid var(--ink);
+      border-radius: 24px;
+      padding: 24px 26px;
+      background: var(--paper);
+      box-shadow: 5px 5px 0 var(--ink);
+    }
+
+    .drink-note {
+      margin: 24px auto 0;
+      max-width: 540px;
+      border: 2px solid var(--ink);
+      border-radius: 20px;
+      padding: 18px 20px;
+      background: var(--olive);
+      color: white;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .drink-note strong {
+      font-family: "Space Grotesk", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .after {
+      margin: 34px auto 0;
+      max-width: 540px;
+      background: var(--pink);
+      color: white;
+      border: 2px solid var(--ink);
+      border-radius: 24px;
+      padding: 24px 26px;
+      box-shadow: 5px 5px 0 var(--ink);
+    }
+
+    .after-title {
+      margin: 0 0 7px;
+      font-family: "Space Grotesk", sans-serif;
+      text-transform: uppercase;
+      font-size: 24px;
+      letter-spacing: -.02em;
+    }
+
+    .after p {
+      margin: 0;
+      line-height: 1.55;
+      font-size: 15px;
+    }
+
+    .rsvp {
+      margin-top: 38px;
+    }
+
+    .rsvp > strong {
+      display: block;
+      font-family: "Space Grotesk", sans-serif;
+      text-transform: uppercase;
+      font-size: 23px;
+      margin-bottom: 6px;
+    }
+
+    .rsvp > span {
+      font-size: 14px;
+      color: rgba(17,17,17,.68);
+    }
+
+    .rsvp-form {
+      margin: 22px auto 0;
+      max-width: 520px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .rsvp-form input[type="text"] {
+      flex: 1;
+      min-width: 0;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      padding: 15px 18px;
+      background: white;
+      color: var(--ink);
+      font: inherit;
+      outline: none;
+    }
+
+    .rsvp-form input[type="text"]:focus {
+      box-shadow: 0 0 0 3px rgba(201,255,53,.55);
+    }
+
+    .rsvp-form button {
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      padding: 15px 22px;
+      background: var(--ink);
+      color: white;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      cursor: pointer;
+    }
+
+    .rsvp-form button:disabled {
+      opacity: .6;
+      cursor: wait;
+    }
+
+    .form-status {
+      min-height: 22px;
+      margin-top: 10px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .footer {
+      margin-top: 38px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      opacity: .55;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 18px 12px;
+        align-items: flex-start;
+      }
+
+      .invite {
+        border-radius: 26px;
+        padding: 50px 22px 34px;
+        box-shadow: 7px 7px 0 var(--ink);
+      }
+
+      h1 {
+        font-size: clamp(58px, 20vw, 88px);
+      }
+
+      .welcome {
+        font-size: 16px;
+      }
+
+      .row {
+        align-items: flex-start;
+      }
+
+      .included,
+      .tips,
+      .after {
+        padding: 22px 18px;
+      }
+
+      .rsvp-form {
+        flex-direction: column;
+      }
+
+      .rsvp-form button {
+        width: 100%;
+      }
+
+      .dot.one {
+        width: 70px;
+        height: 70px;
+      }
+
+      .dot.two {
+        width: 56px;
+        height: 56px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="invite">
+
+    <div class="dot one"></div>
+    <div class="dot two"></div>
+    <div class="dot three"></div>
+
+    <div class="kicker">You’re invited</div>
+
+    <h1>
+      Lana’s<br>
+      24th
+    </h1>
+
+    <div class="paintball">
+      Paintball Party
+    </div>
+
+    <p class="welcome">
+      Come buss it down for <strong>Lana’s 24th birthday</strong> with paintball,
+      followed by drinks at the temple AKA the <strong>Deep Deuce patio</strong> after.
+      Come ready to party & work out some unresolved anger.
+    </p>
+
+    <div class="details">
+
+      <div class="row">
+        <div class="label">Date</div>
+        <div class="value">Saturday, October 10</div>
+      </div>
+
+      <div class="row">
+        <div class="label">Time</div>
+        <div class="value">4:00 PM</div>
+      </div>
+
+      <div class="row">
+        <div class="label">Location</div>
+        <div class="value">
+          9420 W Interstate 40 Service Rd,<br>
+          Oklahoma City, OK 73128
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="label">Price Per Person</div>
+        <div class="value">$40</div>
+      </div>
+
+    </div>
+
+
+    <div class="included">
+
+      <h2>What’s Included in the $40 PP</h2>
+
+      <ul>
+        <li>High-end Paintball Gun</li>
+        <li>Full-face safety goggles with lots of ventilation</li>
+        <li>Unlimited air for the entire day of play</li>
+        <li>500 Paintballs (Plenty)</li>
+      </ul>
+
+    </div>
+
+
+    <div class="tips">
+
+      <h2>What to Wear</h2>
+
+      <ul>
+        <li>Tennis shoes or other comfortable closed-toe shoes</li>
+        <li>Long sleeves and pants. I'd layer up a tad..</li>
+        <li>Dark clothing you don’t mind getting dirty or stained</li>
+        <li>Wear something comfortable that you can outrun Destiny Alston in</li>
+      </ul>
+
+    </div>
+
+
+    <div class="drink-note">
+      <strong>Good to know:</strong>
+      Outside acoholic drinks are allowed & encouraged.
+    </div>
+
+
+    <div class="after">
+
+      <h2 class="after-title">
+        Drinks After
+      </h2>
+
+      <p>
+        After paintball, we’ll disperse and meet back up on the Deep Deuce patio for drinks & cake & whatever else the night may bring.
+      </p>
+
+    </div>
+
+
+    <div class="rsvp">
+
+      <strong>RSVP by October 6 LATEST</strong>
+
+      <span>
+        Enter your name below to let me know you’re coming.
+      </span>
+
+      <form
+        class="rsvp-form"
+        id="rsvpForm"
+        action="https://api.web3forms.com/submit"
+        method="POST"
+      >
+
+        <input
+          type="hidden"
+          name="access_key"
+          value="6872da09-3a73-461d-8935-35507edf13cd"
+        >
+
+        <input
+          type="hidden"
+          name="subject"
+          value="New RSVP — Lana’s 24th Paintball Party"
+        >
+
+        <input
+          type="hidden"
+          name="from_name"
+          value="Lana’s 24th Birthday Invite"
+        >
+
+        <input
+          type="hidden"
+          name="event"
+          value="Lana’s 24th Paintball Party — Saturday, October 10 at 4:00 PM"
+        >
+
+        <input
+          type="checkbox"
+          name="botcheck"
+          style="display:none"
+        >
+
+        <input
+          type="text"
+          name="name"
+          placeholder="Your name"
+          aria-label="Your name"
+          autocomplete="name"
+          required
+        >
+
+        <button type="submit">
+          RSVP
+        </button>
+
+      </form>
+
+      <div
+        class="form-status"
+        id="formStatus"
+        aria-live="polite"
+      ></div>
+
+    </div>
+
+
+    <div class="footer">
+      Saturday • October 10 • Lana turns 24
+    </div>
+
+  </main>
+
+
+  <script>
+    const form = document.getElementById("rsvpForm");
+    const status = document.getElementById("formStatus");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const button = form.querySelector("button");
+
+      button.disabled = true;
+      button.textContent = "Sending...";
+      status.textContent = "";
+
+      try {
+        const formData = new FormData(form);
+
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          status.textContent = "You’re on the list! See you there.";
+          form.reset();
+        } else {
+          status.textContent = "Something went wrong. Please try again.";
+        }
+
+      } catch (error) {
+        status.textContent = "Something went wrong. Please try again.";
+
+      } finally {
+        button.disabled = false;
+        button.textContent = "RSVP";
+      }
+    });
+  </script>
+
+</body>
+</html>
